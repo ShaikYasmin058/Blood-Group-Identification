@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+</head>
+<body>
+<h1>Register to get more details about the project</h1>
+<form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+<p>
+                {{ field.label_tag }}<br> <!-- label tag -->
+                {{ field }} <!-- input tag -->
+                {% for error in field.errors %}
+<p style="color:rgb(154, 11, 71);">{{ error }}</p>
+                {% endfor %}
+</p>
+        {% endfor %}
+<button type="submit">Register</button>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

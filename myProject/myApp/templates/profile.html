@@ -1,0 +1,501 @@
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Identification Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: inline-block;
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="image"] {
+            width: 150px; /* Set a width for the images */
+            height: auto;
+            margin-bottom: 20px;
+            cursor: pointer; /* Change cursor to pointer for images */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style> 
+     {% load static %} Load static files -->
+ <!-- </head>
+<body>
+
+    <h1>Welcome to the Blood Identification Web App!</h1>
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        
+        <label for="">ABO Blood cell image</label><br>
+        <input type="file" name="abd" id="abd" accept="image/*" /><br /><br /><br>
+       
+     <button type="submit">check for blood group</button> 
+    </form>
+    <hr>
+
+    <div>
+
+     {% if img %}
+        <h3>original Image: {{img_name}} </h3>
+        <img src="{{ img }}" alt="Uploaded Blood Cell Image" style="max-width: 500px;">
+    {% endif %} 
+
+   </div>
+   <hr>
+   <div>
+    {% if obj %}
+            <h3>Blood group: {{ obj }}</h3>
+    {% endif %} {% if mor_img %}
+    <hr />
+    <h2>Morphological Image:</h2>
+    <img src="{{ mor_img }}" alt="Processed Image" />
+    {% endif %} {% if obj %}
+    <hr />
+    <h2>Detected Blood Group: {{ obj }}</h2>
+    {% endif %}
+   </div>    
+</body>
+</html>    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Identification Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: inline-block;
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+            cursor: pointer; /* Change cursor to pointer for files */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    {% load static %}  Load static files if needed  
+ </head> 
+ <body>
+    <h1>Welcome to the Blood Identification Web App!!!</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'results' %}">
+         {% csrf_token %}  Add CSRF token for security   
+           <label for="abd">ABD Blood Cell Image</label>
+        <input type="file" id="abd" name="abd" accept="image/*"><br>
+         
+        <!-- <label for="rh">RH Blood Cell Image</label>
+        <input type="file" id="rh" name="rh" accept="image/*"><br>  -->
+        
+         <!-- <button type="submit">Check for Blood Group</button>
+    </form>
+    <hr>
+    <div>
+        {% if obj %}
+           <img src="{{img}}" alt="" height="500px" width="500px">
+        {% endif %} 
+    </div>  
+
+        <form method="post">
+           
+            {% csrf_token %}
+            {{ form.as_p }}    
+            
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Blood Identification Web Page</title>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             text-align: center;
+             background-color: #f0f0f0;
+             margin: 0;
+             padding: 20px;
+         }
+         h1 {
+             color: #333;
+             margin-bottom: 20px;
+         }
+         form {
+             display: inline-block;
+             margin-top: 20px;
+             background: white;
+             padding: 20px;
+             border-radius: 8px;
+             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+         }
+         label {
+             display: block;
+             margin-bottom: 10px;
+             font-weight: bold;
+         }
+         input[type="file"] {
+             margin-bottom: 20px;
+             cursor: pointer; /* Change cursor to pointer for files */
+         }
+         button {
+             padding: 10px 20px;
+             font-size: 16px;
+             background-color: #007BFF;
+             color: white;
+             border: none;
+             border-radius: 5px;
+             cursor: pointer;
+         }
+         button:hover {
+             background-color: #0056b3;
+         }
+     </style>
+     {% load static %}  <!-- Load static files if needed -->
+  </head> 
+  <body>
+     <h1>Welcome to the Blood Identification Web App!</h1>
+     <form method="post" enctype="multipart/form-data" action="{% url 'results' %}">
+         {% csrf_token %} <!-- Add CSRF token for security -->
+           <label for="abo">ABD Blood Cell Image</label>
+         <input type="file" id="abd" name="abd" accept="image/*"><br>
+         
+         <!-- <label for="rh">RH Blood Cell Image</label>
+         <input type="file" id="rh" name="rh" accept="image/*"><br> -->
+         
+         <button type="submit">Check for Blood Group</button>
+     </form>
+     <hr>
+     <div>
+         <form method="post">
+           
+             {% csrf_token %}
+             {{ form.as_p }}
+             <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTop3E0Vbd5iN9TeJULuPMbVEhcFl2TveWHrQ&s"> -->
+             <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSjvMia5gXlsMzs_MABflNFbg9-FRjkDcLJQ&s"> -->
+             <!-- <img src="data:image/jpeg;base64,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"> -->
+             <!-- <img src="https://www.shutterstock.com/image-photo/blood-group-testing-by-slide-260nw-2085858448.jpg" alt="Blood Cells" width="800" height="500">
+             <!-- <img src="data:image/jpeg;base64,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"> -->
+          </form>       
+ </body>
+ </html>
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+<!-- 
+              <form method="POST" enctype="multipart/form-data"> 
+                  {% csrf_token %}
+                <label for="abd">Select Image:</label>
+                <input type="file" id="abd" name="abd" required>
+                <button type="submit">Upload</button> 
+               </form> -->
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Upload and Process Image</title>
+            </head>
+            <body>
+                <h1>Upload and Process an Image</h1>
+                 <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="abd">Select Image:</label>
+                    <input type="file" id="abd" name="abd" required>
+                    <button type="submit">Upload</button>
+                </form> 
+             
+                {% if error %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endif %}
+            
+                {% if img %}
+                    <h2>Original Image:</h2>
+                    <img src="{{ img }}" alt="Uploaded Image" style="max-width: 500px;">
+                    
+                {% endif %}
+
+
+            
+                {% if processed_img %}
+                    <h2>Morphological Image (Binary):</h2>
+                    <img src="{{ mor_img }}" alt="mor Image" style="max-width: 500px;">
+                {% endif %}
+
+
+            
+                {% if binary_values %}
+                    <h2>Binary Values:</h2>
+                    <pre>{{ binary_values }}</pre>
+                {% endif %}
+            
+                {% if unique_values %}
+                    <h2>Unique Values in Binary Image:</h2>
+                    <p>{{ unique_values }}</p>
+                {% endif %}
+            </body>
+            </html>     
+                         
+
+ 
+
+
+
+
+
+
+
+
+            <!-- <form method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="csrfmiddlewaretoken" value="3aGnd1QY0xApJz49QVC81q5mPx7X0YTBY8gDXQGyjqAkJYfLbMunmqqpdcJTlHk5">
+                <label for="abd">Select Image:</label>
+                <input type="file" id="abd" name="abd" required>
+                <button type="submit">Upload</button> -->
+            <!-- </form> -->
+            
+
+
+ 
+ <!-- original image
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload and Process Image</title>
+</head>
+<body>
+    <h1>Upload and Process an Image</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="abd">Select Image:</label>
+        <input type="file" id="abd" name="abd" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if img %}
+        <h2>Original Image:</h2>
+        <img src="{{ img }}" alt="Uploaded Image" style="max-width: 500px;">
+    {% endif %} 
+
+    {% if processed_img %}
+        <h2>Processed Image (Binary):</h2>
+        <img src="{{ processed_img }}" alt="Processed Image" style="max-width: 500px;">
+    {% endif %}
+
+    {% if binary_values %}
+        <h2>Full Binary Values:</h2>
+        <pre>{{ binary_values }}</pre>
+    {% endif %}
+
+    {% if binary_values_preview %}
+        <h2>Binary Values Preview:</h2>
+        <pre>{{ binary_values_preview }}</pre>
+    {% endif %}
+
+    {% if unique_values %}
+        <h2>Unique Values in Binary Image:</h2>
+        <p>{{ unique_values }}</p>
+    {% endif %} 
+</body>
+</html>  
+
+
+
+
+ -->
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Group Detection</title>
+</head>
+<body>
+    <h1>Blood Group Detection</h1>
+    
+    {% if img %}
+        <h2>Processed Image:</h2>
+        <img src="{{ img }}" alt="Processed Image">
+
+
+        
+        
+        <h3>Analysis Results:</h3>
+        <p>Blood Type: {{ blood_type }}</p>
+         <!-- <ul>
+            <li>Agglutination in Region A: 1</li>
+            <li>Agglutination in Region B: 9</li>
+            <li>Agglutination in Region D: 12</li>
+        </ul>  -->
+        
+     {% elif error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+    <h2>Upload an Image:</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="abd" accept="image/*" required>
+        <button type="submit">Analyze</button>
+    </form>
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
