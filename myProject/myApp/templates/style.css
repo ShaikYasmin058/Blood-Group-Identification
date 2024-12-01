@@ -1,0 +1,97 @@
+
+.button ,.hr {
+    display: flex;
+    margin-left: 50px;
+    border-radius: 5px;
+    gap: 10px;
+    text-align: center;
+ 
+}
+ .login  {
+    background-color: rgb(38, 2, 39);
+    color: rgb(73, 11, 180);
+    border: none;
+    display: inline-block;
+    margin: 4px 2px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.sign{
+    background-color: rgb(187, 20, 90);
+    color: rgb(230, 15, 201);
+    border: none;
+    display: inline-block;
+    margin: 4px 2px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+h1{
+    margin-left: 50px;
+}
+h3 ,h2{
+    margin-left: 50px;
+}
+.form{
+    margin-left: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+.upload-container {
+    margin: 20px 0;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
