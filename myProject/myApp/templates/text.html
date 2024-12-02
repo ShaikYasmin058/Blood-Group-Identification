@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,6 +66,7 @@
     <hr class="hr">
 </body>
 </html>
+ -->
 
 
 
@@ -73,7 +74,113 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(128, 0, 0, 0.8)), url('https://www.w3schools.com/w3images/bloodcell.jpg'); /* Soft red gradient + blood cell image */
+            background-size: cover; /* Make the background image cover the entire screen */
+            background-position: center; /* Position the background to the center */
+            color: #fff; /* White text for contrast */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            background-attachment: fixed; /* Keep the background fixed during scrolling */
+        }
 
+        /* Main Heading Styling */
+        h1 {
+            font-size: 3.5em;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        /* Subheading Styling */
+        h3 {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        /* Button Container Styling */
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Common Button Styling */
+        .button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 200px;
+        }
+
+        /* Login Button Styling */
+        .login {
+            background: linear-gradient(135deg, #00c6ff, #007bff); /* Softer blue gradient */
+            color: #fff;
+        }
+
+        .login:hover {
+            background: linear-gradient(135deg, #0099cc, #0056b3); /* Darker blue on hover */
+            transform: translateY(-5px); /* Lift effect */
+        }
+
+        /* Register Button Styling */
+        .sign {
+            background: linear-gradient(135deg, #00b04f, #28a745); /* Softer green gradient */
+            color: #fff;
+        }
+
+        .sign:hover {
+            background: linear-gradient(135deg, #2d9e5b, #218838); /* Darker green on hover */
+            transform: translateY(-5px); /* Lift effect */
+        }
+
+        /* Horizontal Rule Styling */
+        hr {
+            margin: 30px auto;
+            width: 60%;
+            border: 1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Blood Group Identification Page!</h1>
+    <hr>
+    <h3>Please Login or Register to continue</h3>
+    <div class="button-container">
+        <a href="{% url 'login' %}">
+            <button class="button login">Login</button>
+        </a>
+        <a href="{% url 'register' %}">
+            <button class="button sign">Register</button>
+        </a>
+    </div>
+    <hr>
+</body>
+</html>
 
 
 
