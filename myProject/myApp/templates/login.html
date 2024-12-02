@@ -1,132 +1,110 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <div>
-        <h2>Login</h2> {{ msg }}
-        
-        <form method="post">
-          
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" >Login</button>
-            
-        </form>
-    </div>
-</body>
-</html>
- 
-
-
-
-
-
-
-
-
-
-
-
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        /* Set background color and font */
+        /* Apply styles to center the content */
         body {
             font-family: Arial, sans-serif;
-            background-color: #69deee7c;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: linear-gradient(45deg, #ff99cc, #66ccff, #ffcc99, #ccff99);  /* Vibrant gradient background */
+            background-size: 400% 400%; /* Allows smooth transition for animation */
+            animation: gradientAnimation 10s ease infinite; /* Smooth animation */
         }
 
-        /* Container to hold the login form */
+        /* Gradient animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Container for the login form */
         .login-container {
-            background-color: #2fc5e7;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
+            background: linear-gradient(135deg, #ff80b5, #ff5e62); /* Beautiful gradient background for the box */
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
             text-align: center;
+            width: 100%;
+            max-width: 400px; /* Limiting the width for better layout */
+            transition: transform 0.3s ease; /* Smooth hover effect */
         }
 
-        /* Style the form title */
-        h2 {
-            color: #333;
+        /* Hover effect for the container */
+        .login-container:hover {
+            transform: scale(1.02); /* Slightly enlarge the box on hover */
         }
 
-        /* Style the form fields */
+        /* Form title */
+        .login-container h2 {
+            font-size: 2.2rem;
+            color: white; /* White text for the title */
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Form fields styling */
         .login-container form {
             display: flex;
             flex-direction: column;
+            align-items: stretch;
         }
 
-        .login-container form input {
-            padding: 10px;
+        /* Individual form input fields */
+        .login-container input {
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #0e1112;
+            border: 1px solid #ff5e62; /* Matching the gradient border */
             border-radius: 4px;
             font-size: 16px;
+            transition: border-color 0.3s ease;
         }
 
-        /* Style the submit button */
+        /* Input field focus effect */
+        .login-container input:focus {
+            border-color: #ff80b5; /* Change border color on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        /* Submit button */
         .login-container button {
-            background-color: #050202;  /* Green color */
-            color: rgb(253, 254, 244);
             padding: 12px;
+            background-color: #1cd016; /* Green button */
+            color: white;
             border: none;
             border-radius: 4px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        /* Hover effect for the submit button */
+        /* Button hover effect */
         .login-container button:hover {
-            background-color: #45a049;
+            background-color: #6fe875; /* Slightly darker green on hover */
+            transform: scale(1.05); /* Slightly enlarge the button on hover */
         }
 
-        /* Style the message below the form */
-        .login-container .msg {
-            color: #f44336;  /* Red color for error message */
+        /* Message below the form */
+        .msg {
+            color: #f44336; /* Red for error message */
             margin: 10px 0;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        
-        <!-- Display any messages (e.g., error messages) -->
         <div class="msg">{{ msg }}</div>
-        
-        <!-- Login form -->
+
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
@@ -135,61 +113,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
