@@ -195,7 +195,7 @@
 
 
 
-
+<!-- 
 
  <!DOCTYPE html>
  <html lang="en">
@@ -460,6 +460,190 @@
     </form>
 </body>
 </html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Group Detection</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: rgb(167, 223, 231);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #cc18d3;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            padding: 5px;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #d21010;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+
+        p {
+            font-size: 1em;
+            color: red;
+            margin: 10px 0;
+        }
+
+        img {
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            max-width: 90%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .results h2 {
+            color: #c41977;
+            margin-bottom: 10px;
+        }
+
+        .results p, .results ul {
+            color: #333;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-box {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Blood Group Detection</h1>
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="abd">Select Image:</label>
+            <input type="file" id="abd" name="abd" accept="image/*" required>
+            <button type="submit"><b>Upload and Analyze</b></button>
+        </form>
+
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+
+        {% if original_img or bin_img %}
+            <div class="results">
+                <h2>Images:</h2>
+                <div class="image-container">
+                    {% if original_img %}
+                    <div class="image-box">
+                        <h3>Original Image</h3>
+                        <img src="{{ original_img }}" alt="Original Image">
+                    </div>
+                    {% endif %}
+                    
+                    {% if bin_img %}
+                    <div class="image-box">
+                        <h3>Binary Image (Morphological)</h3>
+                        <img src="{{ bin_img }}" alt="Binary Image">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if blood_type %}
+            <div class="results">
+                <h2>Analysis Results:</h2>
+                <p>Blood Type: <strong>{{ blood_type }}</strong></p>
+                <!-- <ul>
+                    <li>Agglutination in Region A: {{ region_A }}</li>
+                    <li>Agglutination in Region B: {{ region_B }}</li>
+                    <li>Agglutination in Region D: {{ region_D }}</li>
+                </ul> -->
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
 
 
 
