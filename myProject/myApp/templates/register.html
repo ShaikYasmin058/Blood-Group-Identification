@@ -1,74 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* Center the form using Flexbox */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center; /* Horizontal centering */
+            align-items: center; /* Vertical centering */
+            background: linear-gradient(135deg, #ff99cc, #66ccff, #ffcc99, #ccff99); /* Light gradient background */
+            background-size: cover; /* Ensure it covers the full viewport */
+        }
+
+        /* Style the form */
+        form {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            width: 100%;
+            max-width: 420px; /* Restrict maximum width */
+        }
+
+        /* Style the heading */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        /* Style the input and error sections */
+        form p {
+            margin-bottom: 18px;
+        }
+
+        form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #5f6368; /* Subtle text color */
+        }
+
+        form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Input field focus effect */
+        form input:focus {
+            border-color: #ff5722; /* Focus border color */
+            outline: none; /* Remove default outline */
+        }
+
+        /* Error message styling */
+        form p[style] {
+            color: rgb(154, 11, 71);
+            font-size: 14px;
+        }
+
+        /* Submit button styling */
+        button {
+            background-color: #ff5722; /* Orange color */
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05); /* Slightly enlarge the button on hover */
+        }
+
+        /* Add subtle hover effect to form fields */
+        form input:hover {
+            border-color: #ff8a65; /* Change border color on hover */
+        }
+    </style>
 </head>
 <body>
-<h1>Register to get more details about the project</h1>
-<form method="post">
+    <form method="post">
+        <h1>Register to Get More Details About the Project</h1>
         {% csrf_token %}
         {% for field in form %}
-<p>
-                {{ field.label_tag }}<br> <!-- label tag -->
-                {{ field }} <!-- input tag -->
-                {% for error in field.errors %}
-<p style="color:rgb(154, 11, 71);">{{ error }}</p>
-                {% endfor %}
-</p>
+        <p>
+            {{ field.label_tag }}<br> <!-- label tag -->
+            {{ field }} <!-- input tag -->
+            {% for error in field.errors %}
+            <p style="color:rgb(154, 11, 71);">{{ error }}</p>
+            {% endfor %}
+        </p>
         {% endfor %}
-<button type="submit">Register</button>
-</form>
+        <button type="submit">Register</button>
+    </form>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
