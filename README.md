@@ -41,7 +41,7 @@ Follow these steps to set up the project locally:
       bash
     npm start  
    
-Usage
+**##Usage:**
 
   Open the application in your web browser.
   Use the interactive interface to explore blood group identification.
@@ -49,7 +49,7 @@ Usage
 
 
 
-Technologies Used:
+**Technologies Used:**
 
        Frontend: [HTML/CSS]
        Backend: [Django/Flask]
@@ -57,14 +57,14 @@ Technologies Used:
 
 
 
-Future Enhancements:
+**Future Enhancements:**
 
       AI Integration: Automate blood type recognition using machine learning.
       User Profiles: Allow users to save their results.
 
 
       
-Features:
+**Features:**
       User-Friendly Interface: Easy navigation for users to register, log in, upload images, and view results.
      AI-Powered Analysis: High accuracy in identifying blood groups and Rh factor.
      Result Transparency: Annotated results with confidence scores.
@@ -73,7 +73,7 @@ Features:
       
 
 
-Acknowledgements:
+**Acknowledgements:**
   
       Inspiration and guidance from krushnaraj sir.
       Blood cell images sourced from lab which has given by our mentor.
