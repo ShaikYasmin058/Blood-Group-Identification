@@ -23,10 +23,9 @@
 - [Technologies Used](#technologies-used)  
 - [Screenshots](#screenshots)  
 - [Future Enhancements](#future-enhancements)  
-- [Contributing](#contributing)  
-- [License](#license)  
+ 
 
----
+
 
 ## Installation  
 Follow these steps to set up the project locally:  
