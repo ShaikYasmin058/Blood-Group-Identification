@@ -1,7 +1,8 @@
 # Blood_Group_Identification Web App  
 
 ## Description  
-    The process of blood group identification using blood cell images. It eliminates manual testing errors, ensures faster results. Users upload images of blood cells to the app, and the system analyzes these images to identify the blood group, displaying results along with annotated visuals. The Blood Identification Web App is an innovative tool designed to streamline and enhance the process of identifying blood types
+    The process of blood group identification using blood cell images. It eliminates manual testing errors, ensures faster results. Users upload images of blood cells to the app, and the system analyzes these images to identify the blood group, displaying results along with annotated visuals. The Blood Identification Web App is an innovative tool designed to streamline and enhance the process of identifying blood types.
+    The Blood Identification Web App is an innovative tool designed to streamline and enhance the process of identifying blood types. This project utilizes OpenCV, a powerful open-source computer vision library, to analyze and process blood cell images, providing accurate visualization and insights into ABO and Rh blood typing.
 
 ## Features  
 - **Blood Group Identification**: Visual representation of ABO and Rh blood types.  
