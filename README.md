@@ -1,11 +1,8 @@
-# Blood_Group_Identification
-
-# Blood Identification Web App  
+# Blood Group Identification Web App  
 
 ## Description  
      This web application enables users to visually identify ABO and Rh blood types using blood cell images. Designed to be intuitive and visually appealing, the app incorporates blood cell images as background elements to enhance the user experience.  
     Blood group identification is a critical process in medical science, ensuring safe blood transfusions, organ transplants, and understanding hereditary traits. The process involves determining the type of antigens present on the surface of red blood cells (RBCs).
----
 
 ## Features  
 - **Blood Group Identification**: Visual representation of ABO and Rh blood types.  
