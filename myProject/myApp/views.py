@@ -85,6 +85,9 @@ class CustomLoginView(LoginView):
 
 
 
+
+
+
 def profile(request):
     if request.method == "POST":  # Ensure the method is POST
         if request.FILES.get('abd'):  # Get the uploaded file with the correct key
@@ -196,299 +199,6 @@ print(unique_values)
 
 
 
-
-
-
-
-
-
-
-
-
-
-# import cv2
-# import base64
-# import numpy as np
-# from django.shortcuts import render
-
-# def profile(request):
-#     if request.method == "POST":  # Ensure the method is POST
-#         if request.FILES.get('abd'):  # Get the uploaded file with the correct key
-#             img_name = request.FILES['abd'].read()  # Correct file reference 'abd'
-#             encode = base64.b64encode(img_name).decode('utf-8')  # Base64 encode the image data
-            
-#             # Decode the base64 string back into an image
-#             img_array = np.frombuffer(base64.b64decode(encode), np.uint8)
-#             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            
-#             # Convert the image to grayscale
-#             gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            
-#             # Apply Gaussian blur
-#             blur_img = cv2.GaussianBlur(gray_img, (5, 5), 0)
-            
-#             # Histogram equalization for better contrast
-#             enhance_img = cv2.equalizeHist(blur_img)
-            
-#             # Apply thresholding to the enhanced image
-#             _, bin_img = cv2.threshold(enhance_img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-            
-#             # Create a kernel for morphological transformations
-#             kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-            
-#             # Perform morphological opening and closing to clean up the image
-#             bin_img = cv2.morphologyEx(bin_img, cv2.MORPH_OPEN, kernel)
-#             bin_img = cv2.morphologyEx(bin_img, cv2.MORPH_CLOSE, kernel)
-
-#             # Split the binary image into three regions
-#             height, width = bin_img.shape
-#             mid_width = width // 3
-#             region_A = bin_img[:, 0:mid_width]
-#             region_B = bin_img[:, mid_width:2 * mid_width]
-#             region_D = bin_img[:, 2 * mid_width:]
-
-#             # Calculate the number of aggregations for each region
-#             def calculate_aggregation(region):
-#                 num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(region, connectivity=8)
-#                 return num_labels - 1
-
-#             num_region_A = calculate_aggregation(region_A)
-#             num_region_B = calculate_aggregation(region_B)
-#             num_region_D = calculate_aggregation(region_D)
-
-#             # Determine Rh factor (positive or negative)
-#             if num_region_D > 0:
-#                 rh_factor = "Positive"
-#             else:
-#                 rh_factor = "Negative"
-
-#             # Determine blood type based on region A and B
-#             # if num_region_A > 0 and num_region_B == 0:
-#             #     blood_type = "A"
-#             # elif num_region_A == 0 and num_region_B > 0:
-#             #     blood_type = "B"
-#             # elif num_region_A == 0 and num_region_B > 0:
-#             #     blood_type = "AB"
-#             # elif num_region_A == 0 and num_region_B == 0:
-#             #     blood_type = "0"
-#             # else:
-#             #     blood_type = "Unknown"
-
-
-#             if num_region_A > 0 and num_region_B == 0:
-#                blood_type = "A"
-#             elif num_region_A == 0 and num_region_B > 0:
-#                blood_type = "B"
-#             elif num_region_A > 0 and num_region_B > 0:
-#               blood_type = "AB"
-#             elif num_region_A == 0 and num_region_B == 0:
-#               blood_type = "O"
-#             else:
-#               blood_type = "Unknown"
-
-
-#             # Combine blood type with Rh factor
-#             full_blood_type = f"{blood_type} {rh_factor}"
-
-#             # Print the blood type
-#             print(f"Blood Type: {full_blood_type}")
-#             print(f"Agglutination Regions: A={num_region_A}, B={num_region_B}, D={num_region_D}")
-
-#             # Encode the processed binary image back into base64
-#             _, buffer = cv2.imencode('.jpg', bin_img)
-#             bin_img_encoded = base64.b64encode(buffer).decode('utf-8')
-            
-            # # Correct base64 image URL format:
-            # bin_img_url = f"data:image/jpeg;base64,{bin_img_encoded}"
-            
-            # Return the result to the template
-    #         return render(request, 'profile.html', {
-    #             'img': bin_img_url,
-    #             'blood_type': full_blood_type,
-    #             'region_A': num_region_A,
-    #             'region_B': num_region_B,
-    #             'region_D': num_region_D
-    #         })
-    # else:
-    #     return render(request, 'profile.html')
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import cv2
-import base64
-import numpy as np
-from django.shortcuts import render
-
-def profile(request):
-    if request.method == "POST":  # Ensure the method is POST
-        if request.FILES.get('abd'):  # Get the uploaded file
-            img_data = request.FILES['abd'].read()  # Read the file data
-            encoded_img = base64.b64encode(img_data).decode('utf-8')  # Base64 encode
-            img_array = np.frombuffer(base64.b64decode(encoded_img), np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-
-            if img is None:
-                return render(request, 'profile.html', {'error': 'Invalid image uploaded.'})
-
-            # Preprocess the image
-            gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            blur_img = cv2.GaussianBlur(gray_img, (5, 5), 0)
-            enhance_img = cv2.equalizeHist(blur_img)
-            _, bin_img = cv2.threshold(enhance_img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-            bin_img = cv2.morphologyEx(bin_img, cv2.MORPH_OPEN, kernel)
-            bin_img = cv2.morphologyEx(bin_img, cv2.MORPH_CLOSE, kernel)
-
-            # Split into three regions
-            height, width = bin_img.shape
-            mid_width = width // 3
-            region_A = bin_img[:, 0:mid_width]
-            region_B = bin_img[:, mid_width:2 * mid_width]
-            region_D = bin_img[:, 2 * mid_width:]
-
-            # Calculate agglutination
-            def calculate_aggregation(region):
-                num_labels, _, _, _ = cv2.connectedComponentsWithStats(region, connectivity=8)
-                return num_labels - 1
-
-            num_region_A = calculate_aggregation(region_A)
-            num_region_B = calculate_aggregation(region_B)
-            num_region_D = calculate_aggregation(region_D)
-
-            # Determine Rh factor
-            rh_factor = "Positive" if num_region_D > 0 else "Negative"
-
-            # Determine blood type
-            if num_region_A > 0 and num_region_B == 0:
-                blood_type = "A"
-            elif num_region_A == 0 and num_region_B > 0:
-                blood_type = "B"
-            elif num_region_A > 0 and num_region_B > 0:
-                blood_type = "AB"
-            elif num_region_A == 0 and num_region_B == 0:
-                blood_type = "O"
-            else:
-                blood_type = "Unknown"
-
-            # Combine blood type and Rh factor
-            full_blood_type = f"{blood_type}{'+' if rh_factor == 'Positive' else '-'}"
-
-            # Encode the processed image
-            _, buffer = cv2.imencode('.jpg', bin_img)
-            bin_img_encoded = base64.b64encode(buffer).decode('utf-8')
-            bin_img_url = f"data:image/jpeg;base64,{bin_img_encoded}"
-
-            # Return results to the template
-            return render(request, 'profile.html', {
-                'img': bin_img_url,
-                'blood_type': full_blood_type,
-                'region_A': num_region_A,
-                'region_B': num_region_B,
-                'region_D': num_region_D
-            })
-
-    return render(request, 'profile.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import cv2
 import base64
 import numpy as np
@@ -507,12 +217,12 @@ def profile(request):
 
             print("Image loaded successfully.")
 
-            # Store the original uploaded image as it is for display
-            _, img_buffer = cv2.imencode('.jpg', img)  # Original image (not grayscale)
+            # Encode the original image for display
+            _, img_buffer = cv2.imencode('.jpg', img)
             img_encoded = base64.b64encode(img_buffer).decode('utf-8')
             img_url = f"data:image/jpeg;base64,{img_encoded}"
 
-            # Convert to grayscale (black and white)
+            # Convert to grayscale
             gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
             # Preprocess for binary processing
@@ -532,28 +242,33 @@ def profile(request):
             region_B = bin_img[:, mid_width:2 * mid_width]
             region_D = bin_img[:, 2 * mid_width:]
 
+            # Visualize the regions for debugging
+            cv2.imwrite('/tmp/region_A.jpg', region_A)
+            cv2.imwrite('/tmp/region_B.jpg', region_B)
+            cv2.imwrite('/tmp/region_D.jpg', region_D)
+
             # Calculate agglutination
             def calculate_aggregation(region):
                 num_labels, _, _, _ = cv2.connectedComponentsWithStats(region, connectivity=8)
-                return num_labels - 1
+                return num_labels - 1  # Exclude background
 
             num_region_A = calculate_aggregation(region_A)
             num_region_B = calculate_aggregation(region_B)
             num_region_D = calculate_aggregation(region_D)
 
-            print(f"Region A: {num_region_A}, Region B: {num_region_B}, Region D: {num_region_D}")
+            print(f"Agglutination Counts -> Region A: {num_region_A}, Region B: {num_region_B}, Region D: {num_region_D}")
 
-            # Determine Rh factor
-            rh_factor = "Positive" if num_region_D > 0 else "Negative"
+            # Adjusted thresholds for determining blood type and Rh factor
+            rh_factor = "Positive" if num_region_D > 5 else "Negative"  # Adjust threshold as needed
 
             # Determine blood type
-            if num_region_A > 10 and num_region_B <= 10:
+            if num_region_A > 15 and num_region_B <= 15:
                 blood_type = "A"
-            elif num_region_A <=10  and num_region_B > 10:
+            elif num_region_A <= 15 and num_region_B > 15:
                 blood_type = "B"
-            elif num_region_A > 10 and num_region_B > 10:
+            elif num_region_A > 15 and num_region_B > 15:
                 blood_type = "AB"
-            elif num_region_A <= 10 and num_region_B <=10:
+            elif num_region_A <= 15 and num_region_B <= 15:
                 blood_type = "O"
             else:
                 blood_type = "Unknown"
@@ -563,7 +278,7 @@ def profile(request):
 
             print(f"Blood Type: {full_blood_type}")
 
-            # Encode grayscale and binary images for rendering in template
+            # Encode grayscale and binary images for display
             _, gray_buffer = cv2.imencode('.jpg', gray_img)
             gray_img_encoded = base64.b64encode(gray_buffer).decode('utf-8')
             gray_img_url = f"data:image/jpeg;base64,{gray_img_encoded}"
@@ -572,9 +287,9 @@ def profile(request):
             bin_img_encoded = base64.b64encode(bin_buffer).decode('utf-8')
             bin_img_url = f"data:image/jpeg;base64,{bin_img_encoded}"
 
-            # Return both images and results to the template
+            # Return images and results to the template
             return render(request, 'profile.html', {
-                'original_img': img_url,  # Display original image (not grayscale)
+                'original_img': img_url,
                 'gray_img': gray_img_url,
                 'bin_img': bin_img_url,
                 'blood_type': full_blood_type,
@@ -584,21 +299,7 @@ def profile(request):
             })
 
         except Exception as e:
+            print(f"Error: {str(e)}")
             return render(request, 'profile.html', {'error': f"Error processing image: {str(e)}"})
 
     return render(request, 'profile.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
